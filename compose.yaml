@@ -88,10 +88,9 @@ services:
       DISABLE_LOCAL_API: false 
       #BOUNCER_KEY_PLUGIN: ${CROWDSEC_LAPI_KEY}
     volumes:
+      - /opt/docker/volumes/traefik/traefik-logs:/var/log/traefik:ro
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-data:/var/lib/crowdsec/data
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-config:/etc/crowdsec
-      #- ./crowdsec-config/config.yaml:/etc/crowdsec/config.yaml
-      #- ./crowdsec-config/custom-whitelist.yaml:/etc/crowdsec/parsers/s02-enrich/custom-whitelist.yaml
     networks:
       - frontend
       - backend

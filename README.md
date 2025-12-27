@@ -42,3 +42,13 @@ whitelist:
     - "10.0.0.0/8" # Local IPs
     - "172.16.0.0/12" # Local/Docker IPs
 ```
+
+Create/edit the file at `/opt/docker/volumes/crowdsec/crowdsec-config/acquis.yaml` and add the following:
+
+```
+---
+filenames:
+  - /var/log/traefik/*.log
+labels:
+  type: traefik
+```
