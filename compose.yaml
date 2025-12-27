@@ -90,8 +90,8 @@ services:
     volumes:
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-data:/var/lib/crowdsec/data
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-config:/etc/crowdsec
-      - ./crowdsec-config/config.yaml:/etc/crowdsec/config.yaml
-      - ./crowdsec-config/custom-whitelist.yaml:/etc/crowdsec/parsers/s02-enrich/custom-whitelist.yaml
+      #- ./crowdsec-config/config.yaml:/etc/crowdsec/config.yaml
+      #- ./crowdsec-config/custom-whitelist.yaml:/etc/crowdsec/parsers/s02-enrich/custom-whitelist.yaml
     networks:
       - frontend
       - backend
@@ -105,5 +105,6 @@ services:
 networks:
   frontend:
     name: ${PROXY_NETWORK}
+    external: true
   backend:
     internal: true
