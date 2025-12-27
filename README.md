@@ -11,4 +11,34 @@ sudo chown -R $USER:101000 /opt/docker/volumes/crowdsec
 sudo chown -R 101000:101000 /opt/docker/volumes/crowdsec/crowdsec*
 ```
 
-The mounts to the files in ./crowdsec-config will have to be disabled prior to the first start of the stack. After that the mounts can be added back.
+After first start, edit config.yaml and replace the `db_config` section with the follwoing:
+
+```
+db_config:
+  log_level: info
+  type: ${DB_TYPE}
+  user: ${DB_USER}
+  password: ${DB_PASSWORD}
+  db_name: ${DB_NAME}
+  host: ${DB_HOST}
+  port: 5432
+  sslmode: disable
+  flush:
+    max_items: 5000
+    max_age: 7d
+```
+
+Create a file at `/opt/docker/volumes/crowdsec/crowdsec-config/parsers/s02-enrich/custom-whitelist.yaml` and add the following content:
+
+```
+name: crowdsecurity/whitelists
+description: "Whitelist events from my ip addresses"
+whitelist:
+  reason: "my ip ranges"
+  ip:
+    - "127.0.0.1" # Local Host
+  cidr:
+    - "192.168.0.0/16" # Local IPs
+    - "10.0.0.0/8" # Local IPs
+    - "172.16.0.0/12" # Local/Docker IPs
+```
