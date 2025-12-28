@@ -52,3 +52,11 @@ filenames:
 labels:
   type: traefik
 ```
+
+## Helpful Commands
+
+To generate an API Key for a Traefik Bouncer run:
+
+```
+docker exec -t crowdsec cscli bouncers add traefik-bouncer-<hostname>
+```
