@@ -63,7 +63,7 @@ services:
   # CrowdSec - Open-source & Collaborative IPS
   crowdsec:
     <<: *default-base
-    image: crowdsecurity/crowdsec
+    image: crowdsecurity/crowdsec:${_VERSION:-latest}
     hostname: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
     container_name: ${PROJECT_NAME}
     ports:
@@ -76,7 +76,7 @@ services:
       <<: *default-environment
       GID: ${PGID:-1000}
       COLLECTIONS: "crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/http-dos"
-      CUSTOM_HOSTNAME: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
+      CUSTOM_HOSTNAME: ${PROJECT_NAME}-lapi.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
       # Environment variables to configure CrowdSec LAPI for Postgres
       DB_TYPE: postgres
       DB_HOST: ${PROJECT_NAME}.postgres
@@ -87,7 +87,6 @@ services:
       DISABLE_LOCAL_API: false 
       #BOUNCER_KEY_PLUGIN: ${CROWDSEC_LAPI_KEY}
     volumes:
-      - /opt/docker/volumes/traefik/traefik-logs:/var/log/traefik:ro
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-data:/var/lib/crowdsec/data
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-config:/etc/crowdsec
     networks:

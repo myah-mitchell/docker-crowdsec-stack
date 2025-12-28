@@ -11,7 +11,7 @@ sudo chown -R $USER:101000 /opt/docker/volumes/crowdsec
 sudo chown -R 101000:101000 /opt/docker/volumes/crowdsec/crowdsec*
 ```
 
-After first start, edit config.yaml and replace the `db_config` section with the follwoing:
+After first start, edit `/opt/docker/volumes/crowdsec/crowdsec-config/config.yaml` and replace the `db_config` section with the follwoing:
 
 ```
 db_config:
@@ -59,4 +59,12 @@ To generate an API Key for a Traefik Bouncer run:
 
 ```
 docker exec -t crowdsec cscli bouncers add traefik-bouncer-<hostname>
+```
+
+To generate a maching login for a Crowsec Satellite run:
+
+```
+cscli machines add -h <ContainerCrowdsec CUSTOM_HOSTNAME> --auto -f /tmp/crowdsec.yaml
+cat /tmp/crowdsec.yaml
+rm /tmp/crowdsec.yaml
 ```
