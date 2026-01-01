@@ -102,6 +102,7 @@ services:
       - 7422 # appsec waf endpoint
     environment:
       <<: [*environment_tz, *environment_user]
+      GID: "${PGID:-1000}"
       COLLECTIONS: "
         crowdsecurity/traefik 
         crowdsecurity/http-cve 
