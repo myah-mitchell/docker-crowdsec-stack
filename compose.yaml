@@ -107,7 +107,7 @@ services:
       CUSTOM_HOSTNAME: ${PROJECT_NAME}-lapi.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
       # Environment variables to configure CrowdSec LAPI for Postgres
       DB_TYPE: postgres
-      DB_HOST: ${PROJECT_NAME}.postgres
+      DB_HOST: ${PROJECT_NAME}-postgres
       DB_NAME: ${POSTGRES_DB}
       DB_USER: ${POSTGRES_USER}
       DB_PASSWORD: ${POSTGRES_PASSWORD}
