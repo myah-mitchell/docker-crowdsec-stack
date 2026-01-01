@@ -113,6 +113,7 @@ services:
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       # Ensure LAPI is enabled to use the external database
       DISABLE_LOCAL_API: false 
+      DISABLE_AGENT: true
       #BOUNCER_KEY_PLUGIN: ${CROWDSEC_LAPI_KEY}
     volumes:
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-data:/var/lib/crowdsec/data
