@@ -36,7 +36,7 @@ docker exec -t crowdsec cscli bouncers add traefik-bouncer-<hostname>
 To generate a maching login for a Crowsec Satellite run:
 
 ```
-cscli machines add -h <ContainerCrowdsec CUSTOM_HOSTNAME> --auto -f /tmp/crowdsec.yaml
+cscli machines add <ContainerCrowdsec CUSTOM_HOSTNAME> --auto -f /tmp/crowdsec.yaml
 cat /tmp/crowdsec.yaml
 rm /tmp/crowdsec.yaml
 ```

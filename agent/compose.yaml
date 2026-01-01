@@ -107,7 +107,7 @@ services:
       CUSTOM_HOSTNAME: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
       CONFIG_FILE: /crowdsec-config/config.yaml
       LOCAL_API_URL: ${CROWDSEC_LAPI_URL}
-      AGENT_USERNAME: ${CROWDSEC_AGENT_USERNAME}
+      AGENT_USERNAME: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
       AGENT_PASSWORD: ${CROWDSEC_AGENT_PASSWORD}
       DISABLE_LOCAL_API: true # Disable LAPI and use this instance as an log processor only.
       DISABLE_AGENT: false # Disable the log processor and use this instance as an LAPI only.
