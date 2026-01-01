@@ -105,7 +105,7 @@ services:
         crowdsecurity/appsec-generic-rules 
         crowdsecurity/appsec-virtual-patching" 
       CUSTOM_HOSTNAME: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
-      CONFIG_FILE: /crowdsec-config/config-agent.yaml
+      CONFIG_FILE: /crowdsec-config/config.yaml
       LOCAL_API_URL: ${CROWDSEC_LAPI_URL}
       AGENT_USERNAME: ${CROWDSEC_AGENT_USERNAME}
       AGENT_PASSWORD: ${CROWDSEC_AGENT_PASSWORD}

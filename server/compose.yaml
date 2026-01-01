@@ -81,7 +81,7 @@ networks:
     internal: true
     driver_opts:
       encrypted: "true"
-# socket_proxy:
+# socket_proxy:1
 #   name: ${PROJECT_NAME}_socket_proxy
 #   internal: true
 #   driver_opts:
@@ -89,7 +89,7 @@ networks:
 
 services:
 
-  crowdsec:
+  crowdsec-lapi:
     <<: [*limits, *restart, *security, *logging]
     image: crowdsecurity/crowdsec:${CROWDSEC_VERSION:-latest}
     hostname: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}  
@@ -110,8 +110,8 @@ services:
         crowdsecurity/appsec-crs 
         crowdsecurity/appsec-generic-rules 
         crowdsecurity/appsec-virtual-patching" 
-      CUSTOM_HOSTNAME: ${PROJECT_NAME}-lapi.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
-      CONFIG_FILE: /crowdsec-config/config-server.yaml
+      CUSTOM_HOSTNAME: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
+      CONFIG_FILE: /crowdsec-config/config.yaml
       # Environment variables to configure CrowdSec LAPI for Postgres
       DB_TYPE: postgres
       DB_HOST: ${PROJECT_NAME}-postgres
