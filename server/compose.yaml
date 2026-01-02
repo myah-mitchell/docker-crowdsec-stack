@@ -121,7 +121,6 @@ services:
       #LOCAL_API_URL: ${CROWDSEC_LAPI_URL}
       DISABLE_LOCAL_API: false # Disable LAPI and use this instance as an log processor only.
       DISABLE_AGENT: true # Disable the log processor and use this instance as an LAPI only.
-      CROWDSEC_BYPASS_DB_VOLUME_CHECK: true # On LAPI server, disable volume check
     volumes:
       - ./crowdsec-config/config.yaml:/etc/crowdsec/config.yaml
       - ./crowdsec-config/custom-allowlist.yaml:/etc/crowdsec/parsers/s02-enrich/custom-allowlist.yaml
