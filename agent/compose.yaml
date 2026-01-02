@@ -106,7 +106,6 @@ services:
         crowdsecurity/appsec-generic-rules 
         crowdsecurity/appsec-virtual-patching" 
       CUSTOM_HOSTNAME: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
-      CONFIG_FILE: /crowdsec-config/config.yaml
       LOCAL_API_URL: ${CROWDSEC_LAPI_URL}
       AGENT_USERNAME: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
       AGENT_PASSWORD: ${CROWDSEC_AGENT_PASSWORD}
@@ -114,13 +113,10 @@ services:
       DISABLE_AGENT: false # Disable the log processor and use this instance as an LAPI only.
       DOCKER_HOST: tcp://${PROJECT_NAME}-socket-proxy:2375
     volumes:
-      - ./crowdsec-config:/crowdsec-config
-      - ${DOCKER_VOLUMES}/traefik/traefik-logs:/var/log/traefik:ro
+      - ./crowdsec-config/config.yaml:/etc/crowdsec/config.yaml
+      - ./crowdsec-config/acquis.yaml:/etc/crowdsec/acquis.d/acquis-local.yaml
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-config:/etc/crowdsec
-      - type: tmpfs
-        target: /var/lib/crowdsec/data/
-        tmpfs:
-          size: 524288000
+      - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-data:/var/lib/crowdsec/data
     networks:
       - frontend
       - socket_proxy

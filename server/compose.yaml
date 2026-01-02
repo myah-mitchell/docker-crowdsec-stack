@@ -112,7 +112,6 @@ services:
         crowdsecurity/appsec-generic-rules 
         crowdsecurity/appsec-virtual-patching" 
       CUSTOM_HOSTNAME: ${PROJECT_NAME}.${SERVER_NAME}.${SUB_DOMAIN_NAME}${DOMAIN_NAME}
-      CONFIG_FILE: /crowdsec-config/config.yaml
       # Environment variables to configure CrowdSec LAPI for Postgres
       DB_TYPE: postgres
       DB_HOST: ${PROJECT_NAME}-postgres
@@ -124,12 +123,9 @@ services:
       DISABLE_AGENT: true # Disable the log processor and use this instance as an LAPI only.
       CROWDSEC_BYPASS_DB_VOLUME_CHECK: true # On LAPI server, disable volume check
     volumes:
-      - ./crowdsec-config:/crowdsec-config
+      - ./crowdsec-config/config.yaml:/etc/crowdsec/config.yaml
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-config:/etc/crowdsec
-      - type: tmpfs
-        target: /var/lib/crowdsec/data/
-        tmpfs:
-          size: 524288000
+      - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-data:/var/lib/crowdsec/data
     networks:
       - frontend
       - backend

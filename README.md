@@ -25,6 +25,13 @@ whitelist:
     - "172.16.0.0/12" # Local/Docker IPs
 ```
 
+## To Enroll the Server
+Run the following:
+
+```
+cscli console enroll <EnrollToken>
+```
+
 ## Helpful Commands
 
 To generate an API Key for a Traefik Bouncer run:
