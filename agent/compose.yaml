@@ -115,7 +115,7 @@ services:
     volumes:
       - ./crowdsec-config/config.yaml:/etc/crowdsec/config.yaml
       - ./crowdsec-config/acquis.yaml:/etc/crowdsec/acquis.d/acquis-local.yaml
-      - ./crowdsec-config/custome-white-list.yaml:/etc/crowdsec/parsers/s02-enrich/custom-allowlist.yaml
+      - ./crowdsec-config/custom-allowlist.yaml:/etc/crowdsec/parsers/s02-enrich/custom-allowlist.yaml
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-config:/etc/crowdsec
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-data:/var/lib/crowdsec/data
       - ${DOCKER_VOLUMES}/traefik/traefik-logs:/var/log/traefik

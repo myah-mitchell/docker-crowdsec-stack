@@ -124,7 +124,7 @@ services:
       CROWDSEC_BYPASS_DB_VOLUME_CHECK: true # On LAPI server, disable volume check
     volumes:
       - ./crowdsec-config/config.yaml:/etc/crowdsec/config.yaml
-      - ./crowdsec-config/custome-white-list.yaml:/etc/crowdsec/parsers/s02-enrich/custom-allowlist.yaml
+      - ./crowdsec-config/custom-allowlist.yaml:/etc/crowdsec/parsers/s02-enrich/custom-allowlist.yaml
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-config:/etc/crowdsec
       - ${DOCKER_VOLUMES}/${PROJECT_NAME}/crowdsec-data:/var/lib/crowdsec/data
     networks:
